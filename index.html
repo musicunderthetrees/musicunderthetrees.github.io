@@ -44,20 +44,23 @@
     <p><strong>R.I.P. "Vernon the German"</strong></p>
 
     <script>
+    <script>
     const playlistId = 'PLD120C20914884BFA';
     
-    // We use a random index (0-199) but REMOVE the autoplay/mute.
-    // This forces the browser to show the 'Play' button. 
-    // Once the user clicks Play, the sound and randomness will work!
+    // 1. Pick a random number between 0 and 199
     const totalVideos = 200; 
     const randomPosition = Math.floor(Math.random() * totalVideos);
 
-    const embedUrl = `https://www.youtube.com/embed/videoseries?list=${playlistId}&index=${randomPosition}`;
+    // 2. We add 't=' with the current time to make the URL unique every refresh
+    const uniqueID = Date.now();
+
+    // 3. We use the 'shuffle' parameter alongside the random index
+    const embedUrl = `https://www.youtube.com/embed/videoseries?list=${playlistId}&index=${randomPosition}&shuffle=1&cachebust=${uniqueID}`;
 
     document.getElementById('player-container').innerHTML = `
         <iframe src="${embedUrl}" 
                 frameborder="0" 
-                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" 
                 allowfullscreen>
         </iframe>`;
 </script>
