@@ -37,13 +37,32 @@
 
 <div class="container">
     <main>
-        <h3>Featured Playlist</h3>
-        <div class="video-container">
-            <iframe src="https://www.youtube.com/embed/videoseries?list=PLD120C20914884BFA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    <h3>Featured Playlist (Random Start)</h3>
+    <div class="video-container" id="player-container">
         </div>
-        <p>Welcome back! This site is the new home for the Music Under The Trees archives.</p>
-        <p><strong>R.I.P. "Vernon the German"</strong></p>
-    </main>
+    <p>Welcome back! Each time you refresh, a different song from the archives will start.</p>
+    <p><strong>R.I.P. "Vernon the German"</strong></p>
+
+    <script>
+        // Your Playlist ID from your screenshot
+        const playlistId = 'PLD120C20914884BFA';
+        
+        // Total number of videos in your playlist (200)
+        const totalVideos = 200; 
+        const randomPosition = Math.floor(Math.random() * totalVideos);
+
+        // URL to shuffle and start at a random position, muted for autoplay
+        const embedUrl = `https://www.youtube.com/embed/videoseries?list=${playlistId}&index=${randomPosition}&autoplay=1&mute=1`;
+
+        // Injecting the player with Full Screen enabled
+        document.getElementById('player-container').innerHTML = `
+            <iframe src="${embedUrl}" 
+                    frameborder="0" 
+                    allow="autoplay; encrypted-media; fullscreen" 
+                    allowfullscreen>
+            </iframe>`;
+    </script>
+</main>
 
     <nav>
         <h3>Navigation</h3>
