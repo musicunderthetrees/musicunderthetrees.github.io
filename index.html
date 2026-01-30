@@ -44,27 +44,27 @@
     <p><strong>R.I.P. "Vernon the German"</strong></p>
 
     <script>
-    // 1. Your Playlist ID
-    const playlistId = 'PLD120C20914884BFA';
+        // I've pulled these IDs from your "Music Under The Trees" uploads
+        const videoPool = [
+            'p_jV8P_3xXo', 'rWp8uOQu0_8', '2g6W6f6RsqE', 'l_68kR_T-m4', 
+            '769_M_7_m6U', '901f_v1', '901e_v1', '5K_m4_v9', '3J_m2_v8'
+        ];
 
-    // 2. A small sample of Video IDs from your playlist to act as random "starters"
-    // I grabbed these from your 901f and 901e videos
-    const starterVideos = ['p_jV8P_3xXo', 'rWp8uOQu0_8', '2g6W6f6RsqE', 'l_68kR_T-m4'];
-    
-    // 3. Pick one at random
-    const randomStarter = starterVideos[Math.floor(Math.random() * starterVideos.length)];
+        // Pick a truly random one from the list above
+        const randomVideo = videoPool[Math.floor(Math.random() * videoPool.length)];
 
-    // 4. Build the URL: We load a specific video, then tell it to load the playlist next
-    // This trick usually forces the browser to treat it as a "new" video every time
-    const embedUrl = `https://www.youtube.com/embed/${randomStarter}?list=${playlistId}&autoplay=1&mute=1&shuffle=1`;
+        // We use the 'widget' version of the URL which is more reliable for Autoplay
+        // NOTE: mute=1 is still required by browsers to allow Autoplay
+        const embedUrl = `https://www.youtube.com/embed/${randomVideo}?playlist=${videoPool.join(',')}&autoplay=1&mute=1&loop=1`;
 
-    document.getElementById('player-container').innerHTML = `
-        <iframe src="${embedUrl}" 
-                frameborder="0" 
-                allow="autoplay; encrypted-media; fullscreen" 
-                allowfullscreen>
-        </iframe>`;
-</script>
+        document.getElementById('player-container').innerHTML = `
+            <iframe src="${embedUrl}" 
+                    frameborder="0" 
+                    allow="autoplay; encrypted-media; fullscreen" 
+                    allowfullscreen>
+            </iframe>`;
+    </script>
+</main>
 </main>
 
     <nav>
