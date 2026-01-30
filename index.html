@@ -44,24 +44,24 @@
     <p><strong>R.I.P. "Vernon the German"</strong></p>
 
     <script>
-        // Your Playlist ID from your screenshot
-        const playlistId = 'PLD120C20914884BFA';
-        
-        // Total number of videos in your playlist (200)
-        const totalVideos = 200; 
-        const randomPosition = Math.floor(Math.random() * totalVideos);
+    // Your Playlist ID
+    const playlistId = 'PLD120C20914884BFA';
+    
+    // Total videos (200). We pick a random start index.
+    const totalVideos = 200; 
+    const randomPosition = Math.floor(Math.random() * totalVideos);
 
-        // URL to shuffle and start at a random position, muted for autoplay
-        const embedUrl = `https://www.youtube.com/embed/videoseries?list=${playlistId}&index=${randomPosition}&autoplay=1&mute=1`;
+    // Added &shuffle=1 to the URL to help force the random behavior
+    const embedUrl = `https://www.youtube.com/embed/videoseries?list=${playlistId}&index=${randomPosition}&autoplay=1&mute=1&shuffle=1`;
 
-        // Injecting the player with Full Screen enabled
-        document.getElementById('player-container').innerHTML = `
-            <iframe src="${embedUrl}" 
-                    frameborder="0" 
-                    allow="autoplay; encrypted-media; fullscreen" 
-                    allowfullscreen>
-            </iframe>`;
-    </script>
+    // Added 'allow="autoplay"' specifically to the iframe tag
+    document.getElementById('player-container').innerHTML = `
+        <iframe src="${embedUrl}" 
+                frameborder="0" 
+                allow="autoplay; encrypted-media; fullscreen" 
+                allowfullscreen>
+        </iframe>`;
+</script>
 </main>
 
     <nav>
