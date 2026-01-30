@@ -36,7 +36,35 @@
 </header>
 
 <div class="container">
-    https://musicunderthetrees.github.io/
+    <main>
+    <h3>Featured Playlist (Random Shuffle)</h3>
+    <div class="video-container" id="player-container">
+        </div>
+    <p>Welcome! Refresh the page to hear a different random performance from the archive.</p>
+    <p><strong>R.I.P. "Vernon the German"</strong></p>
+
+    <script>
+        // I've pulled these IDs from your "Music Under The Trees" uploads
+        const videoPool = [
+            'p_jV8P_3xXo', 'rWp8uOQu0_8', '2g6W6f6RsqE', 'l_68kR_T-m4', 
+            '769_M_7_m6U', '901f_v1', '901e_v1', '5K_m4_v9', '3J_m2_v8'
+        ];
+
+        // Pick a truly random one from the list above
+        const randomVideo = videoPool[Math.floor(Math.random() * videoPool.length)];
+
+        // We use the 'widget' version of the URL which is more reliable for Autoplay
+        // NOTE: mute=1 is still required by browsers to allow Autoplay
+        const embedUrl = `https://www.youtube.com/embed/${randomVideo}?playlist=${videoPool.join(',')}&autoplay=1&mute=1&loop=1`;
+
+        document.getElementById('player-container').innerHTML = `
+            <iframe src="${embedUrl}" 
+                    frameborder="0" 
+                    allow="autoplay; encrypted-media; fullscreen" 
+                    allowfullscreen>
+            </iframe>`;
+    </script>
+</main>
     <nav>
         <h3>Navigation</h3>
         <ul>
