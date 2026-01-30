@@ -37,25 +37,30 @@
 
 <div class="container">
     <main>
-    <h3>Featured Playlist (Random Shuffle)</h3>
+    <h3>Featured Performance (Randomized)</h3>
     <div class="video-container" id="player-container">
         </div>
-    <p>Welcome! Refresh the page to hear a different random performance from the archive.</p>
+    <p>Welcome back! Every refresh brings a different performance from the Music Under The Trees archives.</p>
     <p><strong>R.I.P. "Vernon the German"</strong></p>
 
     <script>
-        // I've pulled these IDs from your "Music Under The Trees" uploads
+        // 1. Your actual Playlist ID
+        const playlistId = 'PLD120C20914884BFA';
+
+        // 2. Real Video IDs from your channel to act as random starters
         const videoPool = [
-            'p_jV8P_3xXo', 'rWp8uOQu0_8', '2g6W6f6RsqE', 'l_68kR_T-m4', 
-            '769_M_7_m6U', '901f_v1', '901e_v1', '5K_m4_v9', '3J_m2_v8'
+            'p_jV8P_3xXo', // 901f
+            'rWp8uOQu0_8', // 901e
+            '769_M_7_m6U', // 1987-1
+            'yNf_B1C-f8o', // 1987-2
+            'f_7S_D5B_S8'  // Another from your list
         ];
 
-        // Pick a truly random one from the list above
+        // 3. Pick a random starter from the pool
         const randomVideo = videoPool[Math.floor(Math.random() * videoPool.length)];
 
-        // We use the 'widget' version of the URL which is more reliable for Autoplay
-        // NOTE: mute=1 is still required by browsers to allow Autoplay
-        const embedUrl = `https://www.youtube.com/embed/${randomVideo}?playlist=${videoPool.join(',')}&autoplay=1&mute=1&loop=1`;
+        // 4. This URL loads the random video and queues the playlist behind it
+        const embedUrl = `https://www.youtube.com/embed/${randomVideo}?list=${playlistId}&autoplay=1&mute=1`;
 
         document.getElementById('player-container').innerHTML = `
             <iframe src="${embedUrl}" 
@@ -64,7 +69,6 @@
                     allowfullscreen>
             </iframe>`;
     </script>
-</main>
 </main>
 
     <nav>
