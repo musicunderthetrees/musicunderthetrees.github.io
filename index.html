@@ -44,17 +44,20 @@
     <p><strong>R.I.P. "Vernon the German"</strong></p>
 
     <script>
-    // Your Playlist ID
+    // 1. Your Playlist ID
     const playlistId = 'PLD120C20914884BFA';
+
+    // 2. A small sample of Video IDs from your playlist to act as random "starters"
+    // I grabbed these from your 901f and 901e videos
+    const starterVideos = ['p_jV8P_3xXo', 'rWp8uOQu0_8', '2g6W6f6RsqE', 'l_68kR_T-m4'];
     
-    // Total videos (200). We pick a random start index.
-    const totalVideos = 200; 
-    const randomPosition = Math.floor(Math.random() * totalVideos);
+    // 3. Pick one at random
+    const randomStarter = starterVideos[Math.floor(Math.random() * starterVideos.length)];
 
-    // Added &shuffle=1 to the URL to help force the random behavior
-    const embedUrl = `https://www.youtube.com/embed/videoseries?list=${playlistId}&index=${randomPosition}&autoplay=1&mute=1&shuffle=1`;
+    // 4. Build the URL: We load a specific video, then tell it to load the playlist next
+    // This trick usually forces the browser to treat it as a "new" video every time
+    const embedUrl = `https://www.youtube.com/embed/${randomStarter}?list=${playlistId}&autoplay=1&mute=1&shuffle=1`;
 
-    // Added 'allow="autoplay"' specifically to the iframe tag
     document.getElementById('player-container').innerHTML = `
         <iframe src="${embedUrl}" 
                 frameborder="0" 
@@ -62,6 +65,7 @@
                 allowfullscreen>
         </iframe>`;
 </script>
+
 </main>
 
     <nav>
