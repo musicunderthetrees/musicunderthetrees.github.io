@@ -44,31 +44,23 @@
     <p><strong>R.I.P. "Vernon the German"</strong></p>
 
     <script>
-        // 1. Your actual Playlist ID
-        const playlistId = 'PLD120C20914884BFA';
+    const playlistId = 'PLD120C20914884BFA';
+    
+    // We use a random index (0-199) but REMOVE the autoplay/mute.
+    // This forces the browser to show the 'Play' button. 
+    // Once the user clicks Play, the sound and randomness will work!
+    const totalVideos = 200; 
+    const randomPosition = Math.floor(Math.random() * totalVideos);
 
-        // 2. Real Video IDs from your channel to act as random starters
-        const videoPool = [
-            'p_jV8P_3xXo', // 901f
-            'rWp8uOQu0_8', // 901e
-            '769_M_7_m6U', // 1987-1
-            'yNf_B1C-f8o', // 1987-2
-            'f_7S_D5B_S8'  // Another from your list
-        ];
+    const embedUrl = `https://www.youtube.com/embed/videoseries?list=${playlistId}&index=${randomPosition}`;
 
-        // 3. Pick a random starter from the pool
-        const randomVideo = videoPool[Math.floor(Math.random() * videoPool.length)];
-
-        // 4. This URL loads the random video and queues the playlist behind it
-        const embedUrl = `https://www.youtube.com/embed/${randomVideo}?list=${playlistId}&autoplay=1&mute=1`;
-
-        document.getElementById('player-container').innerHTML = `
-            <iframe src="${embedUrl}" 
-                    frameborder="0" 
-                    allow="autoplay; encrypted-media; fullscreen" 
-                    allowfullscreen>
-            </iframe>`;
-    </script>
+    document.getElementById('player-container').innerHTML = `
+        <iframe src="${embedUrl}" 
+                frameborder="0" 
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" 
+                allowfullscreen>
+        </iframe>`;
+</script>
 </main>
 
     <nav>
