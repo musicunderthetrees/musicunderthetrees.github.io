@@ -38,29 +38,15 @@
 <div class="container">
     <main>
     <h3>Featured Performance (Randomized)</h3>
-    <div class="video-container" id="player-container">
-        </div>
-    <p>Welcome back! Every refresh brings a different performance from the Music Under The Trees archives.</p>
-    <p><strong>R.I.P. "Vernon the German"</strong></p>
-    <script>
-    const playlistId = 'PLD120C20914884BFA';
-    
-    // 1. Pick a random number between 0 and 199
-    const totalVideos = 200; 
-    const randomPosition = Math.floor(Math.random() * totalVideos);
+    <div class="video-container" id="player-container"></div>
 
-    // 2. We add 't=' with the current time to make the URL unique every refresh
-    const uniqueID = Date.now();
+<script>
+    var pList = 'PLD120C20914884BFA';
+    var totalVids = 200;
+    var randomIdx = Math.floor(Math.random() * totalVids);
+    var finalUrl = 'https://www.youtube.com/embed/videoseries?list=' + pList + '&index=' + randomIdx;
 
-    // 3. We use the 'shuffle' parameter alongside the random index
-    const embedUrl = `https://www.youtube.com/embed/videoseries?list=${playlistId}&index=${randomPosition}&shuffle=1&cachebust=${uniqueID}`;
-
-    document.getElementById('player-container').innerHTML = `
-        <iframe src="${embedUrl}" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" 
-                allowfullscreen>
-        </iframe>`;
+    document.getElementById('player-container').innerHTML = '<iframe src="' + finalUrl + '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen style="width:100%; height:350px;"></iframe>';
 </script>
 </main>
 
