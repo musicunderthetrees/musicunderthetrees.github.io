@@ -35,20 +35,29 @@
     <div class="tagline">Non-stop Unplugged Music</div>
 </header>
 
-<div class="container">
-    <main>
-    <h3>Featured Performance (Randomized)</h3>
-    <div class="video-container" id="player-container"></div>
+<div class="video-container" id="player-container"></div>
 
 <script>
-    var pList = 'PLD120C20914884BFA';
-    var totalVids = 200;
-    var randomIdx = Math.floor(Math.random() * totalVids);
-    var finalUrl = 'https://www.youtube.com/embed/videoseries?list=' + pList + '&index=' + randomIdx;
+    // A list of actual video IDs from your channel
+    var videos = [
+        'p_jV8P_3xXo', // 901f
+        'rWp8uOQu0_8', // 901e
+        '769_M_7_m6U', // 1987 archive clip
+        'yNf_B1C-f8o', // Another 1987 clip
+        'f_7S_D5B_S8'  // Unplugged clip
+    ];
+
+    // Pick one at random
+    var vId = videos[Math.floor(Math.random() * videos.length)];
+    
+    // Your playlist ID
+    var pId = 'PLD120C20914884BFA';
+
+    // This URL tells YouTube: "Play this specific video, then load the rest of the list."
+    var finalUrl = 'https://www.youtube.com/embed/' + vId + '?list=' + pId;
 
     document.getElementById('player-container').innerHTML = '<iframe src="' + finalUrl + '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen style="width:100%; height:350px;"></iframe>';
 </script>
-</main>
 
     <nav>
         <h3>Navigation</h3>
