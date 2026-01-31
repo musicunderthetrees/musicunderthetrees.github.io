@@ -35,29 +35,27 @@
     <div class="tagline">Non-stop Unplugged Music</div>
 </header>
 
-<div class="video-container" id="player-container"></div>
+<div class="container">
+    <main>
+        <h3>Featured Performance (Randomized)</h3>
+        <div class="video-container" id="player-container">
+            </div>
+        <p>Welcome back! Every refresh brings a different performance from the archives.</p>
+        <p><strong>R.I.P. "Vernon the German"</strong></p>
 
-<script>
-    // A list of actual video IDs from your channel
-    var videos = [
-        'p_jV8P_3xXo', // 901f
-        'rWp8uOQu0_8', // 901e
-        '769_M_7_m6U', // 1987 archive clip
-        'yNf_B1C-f8o', // Another 1987 clip
-        'f_7S_D5B_S8'  // Unplugged clip
-    ];
+        <script>
+            // List of actual Video IDs from your channel to force a random start
+            var videoPool = ['p_jV8P_3xXo', 'rWp8uOQu0_8', '769_M_7_m6U', 'yNf_B1C-f8o', 'f_7S_D5B_S8'];
+            var randomVid = videoPool[Math.floor(Math.random() * videoPool.length)];
+            var playlistId = 'PLD120C20914884BFA';
 
-    // Pick one at random
-    var vId = videos[Math.floor(Math.random() * videos.length)];
-    
-    // Your playlist ID
-    var pId = 'PLD120C20914884BFA';
+            // Build URL: Loads random video first, then the playlist
+            var finalUrl = 'https://www.youtube.com/embed/' + randomVid + '?list=' + playlistId;
 
-    // This URL tells YouTube: "Play this specific video, then load the rest of the list."
-    var finalUrl = 'https://www.youtube.com/embed/' + vId + '?list=' + pId;
-
-    document.getElementById('player-container').innerHTML = '<iframe src="' + finalUrl + '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen style="width:100%; height:350px;"></iframe>';
-</script>
+            document.getElementById('player-container').innerHTML = 
+                '<iframe src="' + finalUrl + '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen style="width:100%; height:350px;"></iframe>';
+        </script>
+    </main>
 
     <nav>
         <h3>Navigation</h3>
@@ -74,8 +72,7 @@
 </div>
 
 <footer>
-    &copy; 2024 Music Under The Trees | Hosted on GitHub Pages
+    <p>&copy; 2026 Music Under The Trees</p>
 </footer>
-
 </body>
 </html>
