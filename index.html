@@ -45,26 +45,33 @@
         <p><strong>R.I.P. "Vernon the German"</strong></p>
 
         <script>
-    // 1. The Pool: Add as many YouTube IDs as you like here
-    var videoPool = [
-        'p_jV8P_3xXo', // 901f
-        'rWp8uOQu0_8', // 901e
-        '769_M_7_m6U', // 1987 clip
-        'yNf_B1C-f8o', // Archive clip
-        'f_7S_D5B_S8'  // Unplugged
+    // 1. Add your favorite Video IDs from the playlist here
+    // These act as the "Starting Gate" for the randomizer
+    var startVideos = [
+        'p_jV8P_3xXo', 
+        'rWp8uOQu0_8', 
+        '769_M_7_m6U', 
+        'yNf_B1C-f8o'
     ];
 
-    // 2. Pick one at random
-    var randomVid = videoPool[Math.floor(Math.random() * videoPool.length)];
+    // 2. Your Playlist ID
     var playlistId = 'PLD120C20914884BFA';
 
-    // 3. The "Force" Button: Adding a timestamp (cb) makes the link unique every second
-    var cb = Date.now();
-    var finalUrl = 'https://www.youtube.com/embed/' + randomVid + '?list=' + playlistId + '&cb=' + cb;
+    // 3. Logic to pick a random starting video
+    var randomStartIndex = Math.floor(Math.random() * startVideos.length);
+    var selectedVideo = startVideos[randomStartIndex];
 
-    // 4. Inject into the player
+    // 4. Construct the URL
+    // This tells YouTube: "Play this specific video, and then load the rest of this playlist."
+    var embedUrl = 'https://www.youtube.com/embed/' + selectedVideo + 
+                   '?list=' + playlistId + 
+                   '&autoplay=1' + 
+                   '&shuffle=1' + 
+                   '&cb=' + Date.now(); // The "Cache Buster"
+
+    // 5. Place it in the container
     document.getElementById('player-container').innerHTML = 
-        '<iframe src="' + finalUrl + '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen></iframe>';
+        '<iframe src="' + embedUrl + '" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
 </script>
     </main>
 
