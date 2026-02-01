@@ -1,79 +1,50 @@
-/* General Page Styling */
+/* The "Stage": Tiled background across the whole screen */
 body {
-    background-color: #3e2723; /* Dark Brown */
-    color: #f1f8e9; /* Off-white/Greenish */
-    font-family: Arial, sans-serif;
+    background-image: url('background1.jpg');
+    background-repeat: repeat;
+    background-attachment: fixed;
+    background-color: #2b1d0e; /* Fallback brown if image loads slowly */
+    color: #f1f8e9;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
     margin: 0;
     padding: 0;
 }
 
+/* The Header: Deep green bar that holds the logo */
 header {
-    background-color: #1b5e20; /* Dark Green */
-    padding: 20px;
+    background-color: rgba(27, 94, 32, 0.9); /* 90% solid green */
+    padding: 25px 10px;
     text-align: center;
-    border-bottom: 3px solid #fbc02d; /* Gold accent */
+    border-bottom: 4px solid #fbc02d; /* Gold accent line */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
-.container {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 20px;
+/* The Logo: Responsive sizing */
+.logo-img {
+    width: 90%;
+    max-width: 550px; /* Keeps it from getting too big on your Mac */
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4); /* Adds depth */
 }
 
-main {
-    flex: 3;
-    min-width: 300px;
-    padding: 10px;
-}
-
-nav {
-    flex: 1;
-    min-width: 200px;
-    background-color: #2e7d32;
-    padding: 15px;
-    border-radius: 8px;
-    margin-top: 10px;
-}
-
-/* THE FIX: Video Aspect Ratio */
-.video-container {
+/* The Video Box: The "Zoom Fix" 16:9 ratio */
+.video-wrapper {
     position: relative;
-    padding-bottom: 56.25%; /* 16:9 ratio */
+    padding-bottom: 56.25%;
     height: 0;
     overflow: hidden;
-    max-width: 100%;
+    max-width: 850px;
+    margin: 30px auto; /* Centers it with space top/bottom */
+    border: 3px solid #fbc02d;
     background: #000;
-    margin-bottom: 20px;
-    border: 2px solid #fbc02d;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
-.video-container iframe {
+.video-wrapper iframe {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-li a {
-    color: #fff;
-    text-decoration: none;
-    display: block;
-    padding: 8px 0;
-    border-bottom: 1px solid #4caf50;
-}
-
-li a:hover {
-    color: #fbc02d;
-}
-
-footer {
-    text-align: center;
-    padding: 20px;
-    font-size: 0.8em;
 }
