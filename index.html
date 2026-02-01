@@ -45,31 +45,24 @@
         <p><strong>R.I.P. "Vernon the German"</strong></p>
 
         <script>
-    // 1. Add your favorite Video IDs from the playlist here
-    // These act as the "Starting Gate" for the randomizer
-    var startVideos = [
-        'p_jV8P_3xXo', 
-        'rWp8uOQu0_8', 
-        '769_M_7_m6U', 
-        'yNf_B1C-f8o'
-    ];
-
-    // 2. Your Playlist ID
+    // 1. Your Playlist ID
     var playlistId = 'PLD120C20914884BFA';
+    
+    // 2. Total number of videos in your playlist (Estimate is fine)
+    var totalVideos = 200; 
+    
+    // 3. Pick a random number between 0 and 199
+    var randomIndex = Math.floor(Math.random() * totalVideos);
 
-    // 3. Logic to pick a random starting video
-    var randomStartIndex = Math.floor(Math.random() * startVideos.length);
-    var selectedVideo = startVideos[randomStartIndex];
-
-    // 4. Construct the URL
-    // This tells YouTube: "Play this specific video, and then load the rest of this playlist."
-    var embedUrl = 'https://www.youtube.com/embed/' + selectedVideo + 
-                   '?list=' + playlistId + 
+    // 4. Build the URL using 'index'
+    // 'list' identifies the playlist
+    // 'index' tells it exactly which video to start on
+    var embedUrl = 'https://www.youtube.com/embed?listType=playlist&list=' + playlistId + 
+                   '&index=' + randomIndex + 
                    '&autoplay=1' + 
-                   '&shuffle=1' + 
-                   '&cb=' + Date.now(); // The "Cache Buster"
+                   '&shuffle=1';
 
-    // 5. Place it in the container
+    // 5. Inject into the player
     document.getElementById('player-container').innerHTML = 
         '<iframe src="' + embedUrl + '" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
 </script>
