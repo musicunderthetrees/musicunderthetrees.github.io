@@ -34,18 +34,26 @@
     </nav>
 </div>
 <script>
-    (function() {
-        var videoPool = ['p_jV8P_3xXo', 'rWp8uOQu0_8', '769_M_7_m6U', 'yNf_B1C-f8o', 'f_7S_D5B_S8'];
-        var randomVid = videoPool[Math.floor(Math.random() * videoPool.length)];
-        var playlistId = 'PLD120C20914884BFA';
-        
-        // This adds a unique number to the end of the URL so the browser can't cache it
-        var cacheBuster = Math.floor(Math.random() * 1000);
-        var finalUrl = "https://www.youtube.com/embed/" + randomVid + "?list=" + playlistId + "&t=" + cacheBuster;
+    // 1. The Pool: Add as many YouTube IDs as you like here
+    var videoPool = [
+        'p_jV8P_3xXo', // 901f
+        'rWp8uOQu0_8', // 901e
+        '769_M_7_m6U', // 1987 clip
+        'yNf_B1C-f8o', // Archive clip
+        'f_7S_D5B_S8'  // Unplugged
+    ];
 
-        document.getElementById('player-container').innerHTML = 
-            '<iframe src="' + finalUrl + '" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen></iframe>';
-    })();
+    // 2. Pick one at random
+    var randomVid = videoPool[Math.floor(Math.random() * videoPool.length)];
+    var playlistId = 'PLD120C20914884BFA';
+
+    // 3. The "Force" Button: Adding a timestamp (cb) makes the link unique every second
+    var cb = Date.now();
+    var finalUrl = 'https://www.youtube.com/embed/' + randomVid + '?list=' + playlistId + '&cb=' + cb;
+
+    // 4. Inject into the player
+    document.getElementById('player-container').innerHTML = 
+        '<iframe src="' + finalUrl + '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen></iframe>';
 </script>
 
 </body>
