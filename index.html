@@ -1,33 +1,10 @@
-<link rel="stylesheet" href="style.css">
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Music Under The Trees - Non-stop Unplugged Music</title>
-    <style>
-        body { background-color: #2d1b0d; color: #e0d8c3; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; display: flex; flex-direction: column; align-items: center; }
-        header { background-color: #3e5c33; width: 100%; padding: 20px; text-align: center; border-bottom: 4px solid #1a2e14; }
-        h1 { margin: 0; color: #fff; font-size: 2.5em; text-shadow: 2px 2px #000; }
-        .tagline { font-style: italic; color: #c2d6bc; }
-        
-        .container { display: flex; max-width: 1000px; width: 95%; margin-top: 20px; gap: 20px; }
-        
-        /* Main Content */
-        main { flex: 3; background: #3d2b1f; padding: 20px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
-        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin-bottom: 20px; }
-        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 3px solid #3e5c33; }
-        
-        /* Sidebar Navigation */
-        nav { flex: 1; background: #3e5c33; padding: 15px; border-radius: 8px; height: fit-content; }
-        nav h3 { border-bottom: 1px solid #c2d6bc; padding-bottom: 5px; margin-top: 0; }
-        nav ul { list-style: none; padding: 0; }
-        nav li { margin-bottom: 10px; }
-        nav a { color: #fff; text-decoration: none; font-weight: bold; }
-        nav a:hover { color: #c2d6bc; text-decoration: underline; }
-
-        footer { margin: 40px 0; text-align: center; font-size: 0.8em; opacity: 0.7; }
-    </style>
+    <title>Music Under The Trees</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -35,43 +12,21 @@
     <img src="logo_dark_edge.jpg" alt="Music Under the Trees" class="logo-img">
 </header>
 
-<div style="padding: 20px;"> <div class="video-wrapper" id="player-container"> </div> </div> ```
-
-As long as every "Start" (`<div>`) has a matching "Close" (`</div>`), the browser will be happy.
-
-**Go ahead and add that extra one in—it’s the secret to keeping the video centered and balanced! Ready to see the logo live?**
-        <p>Welcome back! Every refresh brings a different performance from the archives.</p>
-        <p><strong>Honoring "Vernon the German"</strong></p>
-
-        <script>
-    // 1. Your Playlist ID
-    var playlistId = 'PLD120C20914884BFA';
+<div class="container">
+    <p>Welcome back! Every refresh brings a different performance from the archives.</p>
     
-    // 2. Total number of videos in your playlist (Estimate is fine)
-    var totalVideos = 200; 
-    
-    // 3. Pick a random number between 0 and 199
-    var randomIndex = Math.floor(Math.random() * totalVideos);
+    <div style="padding: 10px;">
+        <div class="video-wrapper" id="player-container">
+            </div>
+    </div>
 
-    // 4. Build the URL using 'index'
-    // 'list' identifies the playlist
-    // 'index' tells it exactly which video to start on
-    var embedUrl = 'https://www.youtube.com/embed?listType=playlist&list=' + playlistId + 
-                   '&index=' + randomIndex + 
-                   '&autoplay=1' + 
-                   '&shuffle=1';
+    <h3>Honoring "Vernon the German"</h3>
 
-    // 5. Inject into the player
-    document.getElementById('player-container').innerHTML = 
-        '<iframe src="' + embedUrl + '" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
-</script>
-    </main>
-
-    <nav>
-        <h3>Navigation</h3>
+    <nav class="nav-box">
+        <h4>Navigation</h4>
         <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="https://www.youtube.com/user/cartoonhepcat">YouTube Channel</a></li>
+            <li><a href="https://www.youtube.com/@musicunderthetrees" target="_blank">YouTube Channel</a></li>
             <li><a href="#">1987 Archive</a></li>
             <li><a href="#">1996 Archive</a></li>
             <li><a href="#">Radio</a></li>
@@ -81,8 +36,23 @@ As long as every "Start" (`<div>`) has a matching "Close" (`</div>`), the browse
     </nav>
 </div>
 
-<footer>
-    <p>&copy; 2026 Music Under The Trees</p>
-</footer>
+<script>
+    var videoPool = [
+        'p_jV8P_3xXo', 
+        'rWp8uOQu0_8', 
+        '769_M_7_m6U', 
+        'yNf_B1C-f8o', 
+        'f_7S_D5B_S8'
+    ];
+
+    var randomVid = videoPool[Math.floor(Math.random() * videoPool.length)];
+    var playlistId = 'PLD120C20914884BFA';
+    var cb = Date.now();
+    var finalUrl = 'https://www.youtube.com/embed/' + randomVid + '?list=' + playlistId + '&cb=' + cb;
+
+    document.getElementById('player-container').innerHTML = 
+        '<iframe src="' + finalUrl + '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen></iframe>';
+</script>
+
 </body>
 </html>
