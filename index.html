@@ -16,7 +16,7 @@
     <p>Welcome back! Every refresh brings a different performance from the archives.</p>
     
     <div class="video-wrapper" id="player-container">
-        </div> </div>
+        </div>
 
     <h3>Honoring "Vernon the German"</h3>
 
@@ -32,23 +32,15 @@
             <li><a href="#">Contact</a></li>
         </ul>
     </nav>
-</div>
-<script>
+</div> <script>
     (function() {
-        // 1. The List
         var vids = ['p_jV8P_3xXo', 'rWp8uOQu0_8', '769_M_7_m6U', 'yNf_B1C-f8o', 'f_7S_D5B_S8'];
-        
-        // 2. The Randomizer
         var pick = vids[Math.floor(Math.random() * vids.length)];
         var playlist = 'PLD120C20914884BFA';
+        var forceRefresh = Date.now();
         
-        // 3. The Cache Destroyer (Force a new request every single time)
-        var forceRefresh = new Date().getTime();
-        
-        // 4. Build the URL
         var finalSrc = "https://www.youtube.com/embed/" + pick + "?list=" + playlist + "&cv=" + forceRefresh;
 
-        // 5. Inject it into the container
         var target = document.getElementById('player-container');
         if (target) {
             target.innerHTML = '<iframe src="' + finalSrc + '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen></iframe>';
