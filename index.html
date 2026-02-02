@@ -1,35 +1,30 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Music Under The Trees</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<header>
-    <img src="logo_dark_edge.jpg" alt="Music Under the Trees" class="logo-img">
-</header>
-
-<div class="container">
-    <p>Welcome back! Every refresh brings a different performance.</p>
-    
-    <div class="video-wrapper" id="player-container">
-        </div>
-
-    <nav class="nav-box">
-        <h4>Navigation</h4>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="https://www.youtube.com/@musicunderthetrees" target="_blank">YouTube Channel</a></li>
-            <li><a href="#">1987 Archive</a></li>
-            <li><a href="#">1996 Archive</a></li>
-        </ul>
-    </nav>
-</div>
-
-<script>
+ <head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>Music Under The Trees</title> 
+  <link rel="stylesheet" href="style.css"> 
+ </head> 
+ <body> 
+  <header> 
+   <img src="logo_dark_edge.jpg" alt="Music Under the Trees" class="logo-img"> 
+  </header> 
+  <div class="container"> 
+   <p>Welcome back! Every refresh brings a different performance.</p> 
+   <div class="video-wrapper" id="player-container">
+    <iframe src="https://www.youtube.com/embed/rWp8uOQu0_8?list=PLD120C20914884BFA&amp;seed=1770018024399" frameborder="0" allowfullscreen></iframe>
+   </div> 
+   <nav class="nav-box"> 
+    <h4>Navigation</h4> 
+    <ul> 
+     <li><a href="index.html">Home</a></li> 
+     <li><a href="https://www.youtube.com/@musicunderthetrees" target="_blank">YouTube Channel</a></li> 
+     <li><a href="#">1987 Archive</a></li> 
+     <li><a href="#">1996 Archive</a></li> 
+    </ul> 
+   </nav> 
+  </div> 
+  <script>
     (function() {
         // We've changed the names to 'myVids' and 'mySelection' 
         // to bypass any old browser memory.
@@ -46,7 +41,6 @@
             box.innerHTML = '<iframe src="' + myLink + '" frameborder="0" allowfullscreen></iframe>';
         }
     })();
-</script>
-
-</body>
+</script> 
+ </body>
 </html>
