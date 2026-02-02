@@ -31,20 +31,19 @@
 
 <script>
     (function() {
-        // The "Flawless" Video Pool
-        var vids = ['rWp8uOQu0_8', '769_M_7_m6U', 'yNf_B1C-f8o', 'f_7S_D5B_S8'];
-        var playlistId = 'PLD120C20914884BFA';
+        // We've changed the names to 'myVids' and 'mySelection' 
+        // to bypass any old browser memory.
+        var myVids = ['rWp8uOQu0_8', '769_M_7_m6U', 'yNf_B1C-f8o', 'f_7S_D5B_S8', 'p_jV8P_3xXo'];
+        var mySelection = myVids[Math.floor(Math.random() * myVids.length)];
+        var myPlaylist = 'PLD120C20914884BFA';
         
-        // Pick the random video
-        var pick = vids[Math.floor(Math.random() * vids.length)];
-        
-        // Construct the URL exactly how the working version does it
-        var finalUrl = "https://www.youtube.com/embed/" + pick + "?list=" + playlistId;
+        // We add a 'session' number that changes every second
+        var session = Date.now();
+        var myLink = "https://www.youtube.com/embed/" + mySelection + "?list=" + myPlaylist + "&seed=" + session;
 
-        // Inject into the player-container
-        var target = document.getElementById('player-container');
-        if (target) {
-            target.innerHTML = '<iframe src="' + finalUrl + '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen></iframe>';
+        var box = document.getElementById('player-container');
+        if (box) {
+            box.innerHTML = '<iframe src="' + myLink + '" frameborder="0" allowfullscreen></iframe>';
         }
     })();
 </script>
