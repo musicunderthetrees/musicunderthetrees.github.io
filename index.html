@@ -15,10 +15,8 @@
 <div class="container">
     <p>Welcome back! Every refresh brings a different performance from the archives.</p>
     
-    <div style="padding: 10px;">
-        <div class="video-wrapper" id="player-container">
-            </div>
-    </div>
+    <div class="video-wrapper" id="player-container">
+        </div>
 
     <h3>Honoring "Vernon the German"</h3>
 
@@ -35,31 +33,20 @@
         </ul>
     </nav>
 </div>
+
 <script>
-    (function() {
-        var videoPool = [
-            'p_jV8P_3xXo', 
-            'rWp8uOQu0_8', 
-            '769_M_7_m6U', 
-            'yNf_B1C-f8o', 
-            'f_7S_D5B_S8'
-        ];
+    // The pool of video IDs
+    var videoPool = ['p_jV8P_3xXo', 'rWp8uOQu0_8', '769_M_7_m6U', 'yNf_B1C-f8o', 'f_7S_D5B_S8'];
+    
+    // Pick one
+    var randomVid = videoPool[Math.floor(Math.random() * videoPool.length)];
+    var playlistId = 'PLD120C20914884BFA';
+    
+    // Simple URL - No Autoplay, No Mute, Just the random ID + Playlist
+    var finalUrl = "https://www.youtube.com/embed/" + randomVid + "?list=" + playlistId;
 
-        // Pick a truly random index
-        var randomIndex = Math.floor(Math.random() * videoPool.length);
-        var selectedVid = videoPool[randomIndex];
-        var playlistId = 'PLD120C20914884BFA';
-        
-        // The Cache Buster: ensures the URL is unique every single time
-        var uniqueID = Date.now();
-        var finalUrl = "https://www.youtube.com/embed/" + selectedVid + "?list=" + playlistId + "&autoplay=1&mute=1&rel=0&cb=" + uniqueID;
-
-        // Injecting the iframe
-        var container = document.getElementById('player-container');
-        if(container) {
-            container.innerHTML = '<iframe src="' + finalUrl + '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen></iframe>';
-        }
-    })();
+    document.getElementById('player-container').innerHTML = 
+        '<iframe src="' + finalUrl + '" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen></iframe>';
 </script>
 
 </body>
