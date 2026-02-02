@@ -32,14 +32,20 @@
             <li><a href="#">Contact</a></li>
         </ul>
     </nav>
-</div> <script>
+</div> 
+    <script>
     (function() {
+        // The individual video IDs
         var vids = ['p_jV8P_3xXo', 'rWp8uOQu0_8', '769_M_7_m6U', 'yNf_B1C-f8o', 'f_7S_D5B_S8'];
-        var pick = vids[Math.floor(Math.random() * vids.length)];
-        var playlist = 'PLD120C20914884BFA';
-        var forceRefresh = Date.now();
         
-        var finalSrc = "https://www.youtube.com/embed/" + pick + "?list=" + playlist + "&cv=" + forceRefresh;
+        // Pick one at random
+        var pick = vids[Math.floor(Math.random() * vids.length)];
+        
+        // Use a unique ID to prevent caching
+        var cacheBuster = Date.now();
+        
+        // Build the URL without the 'list=' parameter
+        var finalSrc = "https://www.youtube.com/embed/" + pick + "?rel=0&cb=" + cacheBuster;
 
         var target = document.getElementById('player-container');
         if (target) {
