@@ -33,19 +33,14 @@
         </ul>
     </nav>
 </div> 
-    <script>
+<script>
     (function() {
-        // The individual video IDs
         var vids = ['p_jV8P_3xXo', 'rWp8uOQu0_8', '769_M_7_m6U', 'yNf_B1C-f8o', 'f_7S_D5B_S8'];
-        
-        // Pick one at random
         var pick = vids[Math.floor(Math.random() * vids.length)];
+        var playlist = 'PLD120C20914884BFA';
         
-        // Use a unique ID to prevent caching
-        var cacheBuster = Date.now();
-        
-        // Build the URL without the 'list=' parameter
-        var finalSrc = "https://www.youtube.com/embed/" + pick + "?rel=0&cb=" + cacheBuster;
+        // This specific order (Video ID + playlist ID) usually forces the random one first
+        var finalSrc = "https://www.youtube.com/embed/" + pick + "?playlist=" + playlist + "&rel=0";
 
         var target = document.getElementById('player-container');
         if (target) {
