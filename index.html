@@ -35,23 +35,31 @@
         </ul>
     </nav>
 </div>
-
 <script>
-    var videoPool = [
-        'p_jV8P_3xXo', 
-        'rWp8uOQu0_8', 
-        '769_M_7_m6U', 
-        'yNf_B1C-f8o', 
-        'f_7S_D5B_S8'
-    ];
+    (function() {
+        var videoPool = [
+            'p_jV8P_3xXo', 
+            'rWp8uOQu0_8', 
+            '769_M_7_m6U', 
+            'yNf_B1C-f8o', 
+            'f_7S_D5B_S8'
+        ];
 
-    var randomVid = videoPool[Math.floor(Math.random() * videoPool.length)];
-    var playlistId = 'PLD120C20914884BFA';
-    var cb = Date.now();
-    var finalUrl = 'https://www.youtube.com/embed/' + randomVid + '?list=' + playlistId + '&cb=' + cb;
+        // Pick a truly random index
+        var randomIndex = Math.floor(Math.random() * videoPool.length);
+        var selectedVid = videoPool[randomIndex];
+        var playlistId = 'PLD120C20914884BFA';
+        
+        // The Cache Buster: ensures the URL is unique every single time
+        var uniqueID = Date.now();
+        var finalUrl = "https://www.youtube.com/embed/" + selectedVid + "?list=" + playlistId + "&autoplay=1&mute=1&rel=0&cb=" + uniqueID;
 
-    document.getElementById('player-container').innerHTML = 
-        '<iframe src="' + finalUrl + '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen></iframe>';
+        // Injecting the iframe
+        var container = document.getElementById('player-container');
+        if(container) {
+            container.innerHTML = '<iframe src="' + finalUrl + '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen></iframe>';
+        }
+    })();
 </script>
 
 </body>
