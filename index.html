@@ -37,10 +37,9 @@
     (function() {
         var vids = ['p_jV8P_3xXo', 'rWp8uOQu0_8', '769_M_7_m6U', 'yNf_B1C-f8o', 'f_7S_D5B_S8'];
         var pick = vids[Math.floor(Math.random() * vids.length)];
-        var playlist = 'PLD120C20914884BFA';
         
-        // This specific order (Video ID + playlist ID) usually forces the random one first
-        var finalSrc = "https://www.youtube.com/embed/" + pick + "?playlist=" + playlist + "&rel=0";
+        // This is the cleanest possible YouTube URL format
+        var finalSrc = "https://www.youtube.com/embed/" + pick + "?rel=0";
 
         var target = document.getElementById('player-container');
         if (target) {
