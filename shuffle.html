@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shuffle Test</title>
+</head>
+<body>
+    <h3>If this randomizes, we've won!</h3>
+    <div id="player-box"></div>
+
+    <script>
+        (function() {
+            // A fresh list of IDs
+            var vids = ['rWp8uOQu0_8', '769_M_7_m6U', 'yNf_B1C-f8o', 'f_7S_D5B_S8'];
+            var pick = vids[Math.floor(Math.random() * vids.length)];
+            
+            // This 'cb' number tells the browser: "This is a brand new request!"
+            var cacheBuster = Date.now();
+            var finalUrl = "https://www.youtube.com/embed/" + pick + "?cb=" + cacheBuster;
+
+            var target = document.getElementById('player-box');
+            if (target) {
+                target.innerHTML = '<iframe width="100%" height="315" src="' + finalUrl + '" frameborder="0" allowfullscreen></iframe>';
+            }
+        })();
+    </script>
+</body>
+</html>
