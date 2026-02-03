@@ -21,27 +21,26 @@
     <div class="video-wrapper" id="video-container"></div>
 
     <script>
-        (function() {
-            // IDs from your 9-video playlist
-            var vids = ['-5yL0N_kO_Y', 'qS4Isk_L0O8', 'o7_D7jP_fXk']; 
-            
-            var pick = vids[Math.floor(Math.random() * vids.length)];
-            var playlistID = 'PL8JCPTPDv9bbWnrM53ncEMXvMEl7aYBXs';
-            
-            // Check if buckets exist before filling them
-            var status = document.getElementById('status-display');
-            var container = document.getElementById('video-container');
+    (function() {
+        // The Playlist ID you gave me
+        var playlistID = 'PL8JCPTPDv9bbWnrM53ncEMXvMEl7aYBXs';
+        
+        // Since there are 9 videos, we pick a random number between 0 and 8
+        var randomPosition = Math.floor(Math.random() * 9);
+        
+        var status = document.getElementById('status-display');
+        if (status) { 
+            status.innerHTML = "STARTING AT VIDEO #" + (randomPosition + 1); 
+        }
 
-            if (status) { 
-                status.innerHTML = "NOW TESTING ID: " + pick; 
-            }
-
-            if (container) {
-                var finalUrl = "https://www.youtube.com/embed/" + pick + "?list=" + playlistID;
-                container.innerHTML = '<iframe src="' + finalUrl + '" frameborder="0" allowfullscreen></iframe>';
-            }
-        })();
-    </script>
+        var container = document.getElementById('video-container');
+        if (container) {
+            // 'index=' tells YouTube which video in the list to start with
+            var finalUrl = "https://www.youtube.com/embed?list=" + playlistID + "&index=" + randomPosition;
+            container.innerHTML = '<iframe src="' + finalUrl + '" frameborder="0" allowfullscreen></iframe>';
+        }
+    })();
+</script>
 
 </body>
 </html>
