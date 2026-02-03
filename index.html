@@ -1,46 +1,49 @@
+<!DOCTYPE html>
 <html lang="en">
- <head> 
-  <meta charset="UTF-8"> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-  <title>Music Under The Trees</title> 
-  <link rel="stylesheet" href="style.css"> 
- </head> 
- <body> 
-  <header> 
-   <img src="logo_dark_edge.jpg" alt="Music Under the Trees" class="logo-img"> 
-  </header> 
-  <div class="container"> 
-   <p>Welcome back! Every refresh brings a different performance.</p> 
-   <div class="video-wrapper" id="player-container">
-    <iframe src="https://www.youtube.com/embed/rWp8uOQu0_8?list=PLD120C20914884BFA&amp;seed=1770018024399" frameborder="0" allowfullscreen></iframe>
-   </div> 
-   <nav class="nav-box"> 
-    <h4>Navigation</h4> 
-    <ul> 
-     <li><a href="index.html">Home</a></li> 
-     <li><a href="https://www.youtube.com/@musicunderthetrees" target="_blank">YouTube Channel</a></li> 
-     <li><a href="#">1987 Archive</a></li> 
-     <li><a href="#">1996 Archive</a></li> 
-    </ul> 
-   </nav> 
-  </div> 
-  <script>
-    (function() {
-        // We've changed the names to 'myVids' and 'mySelection' 
-        // to bypass any old browser memory.
-        var myVids = ['rWp8uOQu0_8', '769_M_7_m6U', 'yNf_B1C-f8o', 'f_7S_D5B_S8', 'p_jV8P_3xXo'];
-        var mySelection = myVids[Math.floor(Math.random() * myVids.length)];
-        var myPlaylist = 'PLD120C20914884BFA';
-        
-        // We add a 'session' number that changes every second
-        var session = Date.now();
-        var myLink = "https://www.youtube.com/embed/" + mySelection + "?list=" + myPlaylist + "&seed=" + session;
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Under The Trees</title>
+    <style>
+        body { background-color: #1a1a1a; color: #e0e0e0; font-family: sans-serif; text-align: center; margin: 0; padding: 20px; }
+        .logo-img { max-width: 200px; margin-bottom: 20px; }
+        .nav-box { background-color: #2d5a27; border: 2px solid #4a7c44; padding: 15px; border-radius: 10px; max-width: 600px; margin: 0 auto 20px; }
+        .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; background: #000; border-radius: 8px; }
+        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        h1 { color: #8fbc8f; margin-bottom: 5px; }
+    </style>
+</head>
+<body>
 
-        var box = document.getElementById('player-container');
-        if (box) {
-            box.innerHTML = '<iframe src="' + myLink + '" frameborder="0" allowfullscreen></iframe>';
-        }
-    })();
-</script> 
- </body>
+    <img src="https://musicunderthetrees.github.io/musicunderthetreeslogo.jpg" alt="Music Under The Trees Logo" class="logo-img">
+
+    <div class="nav-box">
+        <h1>Music Under The Trees</h1>
+        <p>Non-stop Unplugged Music Archive</p>
+        <p id="status-text" style="font-size: 0.8em; color: #a9dfbf;">Initializing Randomizer...</p>
+    </div>
+
+    <div class="video-wrapper" id="player-container">
+        </div>
+
+    <script>
+        (function() {
+            // The confirmed list of IDs
+            var vids = ['rWp8uOQu0_8', '769_M_7_m6U', 'yNf_B1C-f8o', 'f_7S_D5B_S8'];
+            var pick = vids[Math.floor(Math.random() * vids.length)];
+            var playlist = 'PLD120C20914884BFA';
+            
+            // Show the user the math is happening
+            document.getElementById('status-text').innerHTML = "Now Playing: " + pick;
+
+            var container = document.getElementById('player-container');
+            if (container) {
+                // We combine the pick + the playlist for the "Backstage Pass"
+                var finalUrl = "https://www.youtube.com/embed/" + pick + "?list=" + playlist;
+                container.innerHTML = '<iframe src="' + finalUrl + '" frameborder="0" allowfullscreen></iframe>';
+            }
+        })();
+    </script>
+
+</body>
 </html>
