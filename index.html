@@ -7,10 +7,11 @@
     <style>
         body { background-color: #1a1a1a; color: #e0e0e0; font-family: sans-serif; text-align: center; margin: 0; padding: 20px; }
         .logo-img { max-width: 250px; height: auto; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto; }
-        .nav-box { background-color: #2d5a27; border: 2px solid #4a7c44; padding: 20px; border-radius: 15px; max-width: 600px; margin: 0 auto 25px; }
-        .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 800px; margin: 0 auto; background: #000; border-radius: 10px; }
+        .nav-box { background-color: #2d5a27; border: 2px solid #4a7c44; padding: 20px; border-radius: 15px; max-width: 600px; margin: 0 auto 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 800px; margin: 0 auto; background: #000; border-radius: 10px; border: 1px solid #444; }
         .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-        h1 { color: #8fbc8f; margin: 0; font-size: 1.8em; }
+        h1 { color: #8fbc8f; margin: 0 0 10px 0; font-size: 2em; }
+        p { margin: 5px 0; opacity: 0.9; }
     </style>
 </head>
 <body>
@@ -19,26 +20,32 @@
 
     <div class="nav-box">
         <h1>Music Under The Trees</h1>
-        <p id="status-display" style="color: #ffd700; font-weight: bold; margin-top: 10px;">Checking Randomizer...</p>
+        <p>Non-stop Unplugged Music Archive</p>
+        <p id="status-display" style="color: #ffd700; font-size: 0.9em; font-family: monospace;">Selecting Track...</p>
     </div>
 
     <div class="video-wrapper" id="video-container"></div>
 
     <script>
-    (function() {
-        // I've replaced the 'private' IDs with confirmed public ones to test
-        var vids = ['wy3QFvBp64s', '9hI51El-e2c', '2OEL4P1Rz04'];
-        var pick = vids[Math.floor(Math.random() * vids.length)];
-        
-        document.getElementById('status-display').innerHTML = "TUNING TO: " + pick;
+        (function() {
+            // Your 9-video Playlist ID
+            var playlistID = 'PL8JCPTPDv9bbWnrM53ncEMXvMEl7aYBXs';
+            
+            // Randomly pick a starting position (0 through 8)
+            var randomPos = Math.floor(Math.random() * 9);
+            
+            // Update the display
+            var status = document.getElementById('status-display');
+            if (status) { status.innerHTML = "NOW PLAYING: SELECTION #" + (randomPos + 1); }
 
-        var container = document.getElementById('video-container');
-        if (container) {
-            // No playlist, just the direct video link
-            container.innerHTML = '<iframe src="https://www.youtube.com/embed/' + pick + '" frameborder="0" allowfullscreen></iframe>';
-        }
-    })();
-</script>
+            var container = document.getElementById('video-container');
+            if (container) {
+                // The magic URL that shuffles the start
+                var finalUrl = "https://www.youtube.com/embed?list=" + playlistID + "&index=" + randomPos;
+                container.innerHTML = '<iframe src="' + finalUrl + '" frameborder="0" allowfullscreen></iframe>';
+            }
+        })();
+    </script>
 
 </body>
 </html>
