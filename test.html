@@ -1,23 +1,19 @@
-<div class="video-wrapper">
-    <iframe id="video-engine" 
-            width="100%" 
-            height="315" 
-            src="https://www.youtube.com/embed/p_jV8P_3xXo?list=PLD120C20914884BFA" 
-            frameborder="0" 
-            allowfullscreen>
-    </iframe>
-</div>
+<div class="video-wrapper" id="player-container">
+    </div>
 
 <script>
-    (function() {
+    // This 'window.onload' is like a starting pistol
+    window.onload = function() {
         var vids = ['p_jV8P_3xXo', 'rWp8uOQu0_8', '769_M_7_m6U', 'yNf_B1C-f8o', 'f_7S_D5B_S8'];
         var pick = vids[Math.floor(Math.random() * vids.length)];
         var playlist = 'PLD120C20914884BFA';
         
-        var player = document.getElementById('video-engine');
-        if (player) {
-            // We just update the 'src' of the frame that ALREADY exists
-            player.src = "https://www.youtube.com/embed/" + pick + "?list=" + playlist;
+        var finalUrl = "https://www.youtube.com/embed/" + pick + "?list=" + playlist;
+
+        var target = document.getElementById('player-container');
+        if (target) {
+            // Using innerHTML one last time, but triggered by the 'onload' event
+            target.innerHTML = '<iframe width="100%" height="315" src="' + finalUrl + '" frameborder="0" allowfullscreen></iframe>';
         }
-    })();
+    };
 </script>
