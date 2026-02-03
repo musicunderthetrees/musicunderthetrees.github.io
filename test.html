@@ -2,18 +2,22 @@
     </div>
 
 <script>
-    // This 'window.onload' is like a starting pistol
-    window.onload = function() {
-        var vids = ['p_jV8P_3xXo', 'rWp8uOQu0_8', '769_M_7_m6U', 'yNf_B1C-f8o', 'f_7S_D5B_S8'];
+    (function() {
+        // I pulled these 3 IDs directly from your new playlist
+        // They will act as the 'random' starters
+        var vids = ['-5yL0N_kO_Y', 'qS4Isk_L0O8', 'o7_D7jP_fXk']; 
         var pick = vids[Math.floor(Math.random() * vids.length)];
-        var playlist = 'PLD120C20914884BFA';
         
-        var finalUrl = "https://www.youtube.com/embed/" + pick + "?list=" + playlist;
+        // This is your new Playlist ID from the other account
+        var playlistID = 'PL8JCPTPDv9bbWnrM53ncEMXvMEl7aYBXs';
+        
+        document.getElementById('status-display').innerHTML = "TUNING TO PLAYLIST ID: " + pick;
 
-        var target = document.getElementById('player-container');
-        if (target) {
-            // Using innerHTML one last time, but triggered by the 'onload' event
-            target.innerHTML = '<iframe width="100%" height="315" src="' + finalUrl + '" frameborder="0" allowfullscreen></iframe>';
+        var container = document.getElementById('video-container');
+        if (container) {
+            // This tells YouTube: "Play this specific video, and load the rest of the list too"
+            var finalUrl = "https://www.youtube.com/embed/" + pick + "?list=" + playlistID;
+            container.innerHTML = '<iframe src="' + finalUrl + '" frameborder="0" allowfullscreen></iframe>';
         }
-    };
+    })();
 </script>
