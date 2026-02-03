@@ -5,9 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Music Under The Trees</title>
     <style>
-        /* 1. THE BROWN BODY */
         body { 
-            background-color: #2e1d13; /* Dark earthy brown from screenshot */
+            background-color: #2e1d13; 
             color: #e0e0e0; 
             font-family: sans-serif; 
             text-align: center; 
@@ -15,82 +14,90 @@
             padding: 0; 
         }
 
-        /* 2. THE TOP GREEN HEADER */
+        /* 1. GREEN HEADER WITH SUBTITLE */
         header {
-            background-color: #2d5a27; /* Forest Green */
-            padding: 30px 20px;
-            border-bottom: 4px solid #ffd700; /* The Yellow Separator Line */
+            background-color: #2d5a27; 
+            padding: 20px 20px 15px;
+            border-bottom: 4px solid #ffd700; 
         }
 
         .logo-img { 
-            max-width: 320px; 
+            max-width: 300px; 
             height: auto; 
             display: block; 
-            margin: 0 auto; 
+            margin: 0 auto 5px; 
         }
 
-        /* 3. CENTERED CONTENT WRAPPER */
+        .header-subtitle {
+            margin: 0;
+            font-size: 0.9em;
+            font-weight: bold;
+            color: #ffffff;
+            opacity: 0.9;
+            letter-spacing: 0.5px;
+        }
+
         .main-container {
             max-width: 800px;
-            margin: 40px auto; /* This centers everything horizontally */
+            margin: 25px auto; 
             padding: 0 20px;
         }
 
-        /* 4. THE NAVIGATION BOX (Matches Screenshot) */
-        .nav-box { 
-            background-color: #4a7c44; 
-            border: 2px solid #5d9157; 
-            padding: 20px; 
-            border-radius: 15px; 
-            margin-bottom: 30px; 
-            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-            display: inline-block; /* Helps with centering */
-            width: 100%;
-            box-sizing: border-box;
+        /* 2. THE STATUS AND BUTTON (BOX REMOVED) */
+        .controls-area {
+            margin-bottom: 25px;
         }
 
+        #status-display {
+            color: #ffd700; 
+            font-family: monospace; 
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .shuffle-btn {
+            background-color: #4a7c44;
+            color: white;
+            border: 1px solid #ffd700; 
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        /* 3. VIDEO AREA */
         .video-wrapper { 
             position: relative; 
             padding-bottom: 56.25%; 
             height: 0; 
             overflow: hidden; 
             border-radius: 10px; 
-            border: 5px solid #1a110a; /* Darker border for the frame */
+            border: 5px solid #1a110a; 
             box-shadow: 0 10px 30px rgba(0,0,0,0.8);
         }
         .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-
-        .shuffle-btn {
-            background-color: #2d5a27;
-            color: white;
-            border: 1px solid #ffd700; /* Yellow border for the button */
-            padding: 12px 25px;
-            font-size: 16px;
-            border-radius: 25px;
-            cursor: pointer;
-            margin-top: 15px;
-            font-weight: bold;
-        }
     </style>
 </head>
 <body>
 
     <header>
         <img src="logo_dark_edge.jpg" alt="Music Under The Trees" class="logo-img">
+        <p class="header-subtitle">Non-stop Unplugged Music Archive</p>
     </header>
 
     <div class="main-container">
         
-        <div class="nav-box">
-            <p><b>Non-stop Unplugged Music Archive</b></p>
-            <div id="status-display" style="color: #ffd700; font-family: monospace;">Tuning...</div>
+        <div class="controls-area">
+            <div id="status-display">Tuning Archive...</div>
             <button class="shuffle-btn" onclick="playRandom()">🔀 Skip / Shuffle Song</button>
         </div>
 
         <div class="video-wrapper" id="video-container"></div>
 
-        <p style="margin-top: 20px; font-style: italic; opacity: 0.8;">
-            R.I.P. "Vernon the German"
+        <p style="margin-top: 25px; font-style: italic; opacity: 0.7;">
+            Honoring "Vernon the German"
         </p>
 
     </div>
