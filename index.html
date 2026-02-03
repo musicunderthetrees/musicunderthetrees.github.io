@@ -7,40 +7,37 @@
     <style>
         body { background-color: #1a1a1a; color: #e0e0e0; font-family: sans-serif; text-align: center; margin: 0; padding: 20px; }
         .logo-img { max-width: 250px; height: auto; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto; }
-        .nav-box { background-color: #2d5a27; border: 2px solid #4a7c44; padding: 20px; border-radius: 15px; max-width: 600px; margin: 0 auto 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
-        .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 800px; margin: 0 auto; background: #000; border-radius: 10px; border: 1px solid #444; }
+        .nav-box { background-color: #2d5a27; border: 2px solid #4a7c44; padding: 20px; border-radius: 15px; max-width: 600px; margin: 0 auto 25px; }
+        .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 800px; margin: 0 auto; background: #000; border-radius: 10px; }
         .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-        h1 { color: #8fbc8f; margin: 0 0 10px 0; font-size: 2em; }
-        p { margin: 5px 0; opacity: 0.9; }
+        h1 { color: #8fbc8f; margin: 0; font-size: 1.8em; }
     </style>
 </head>
 <body>
 
-    <img src="musicunderthetreeslogo.jpg" alt="Music Under The Trees" class="logo-img">
+    <img src="logo_dark_edge.jpg" alt="Music Under The Trees" class="logo-img">
 
     <div class="nav-box">
         <h1>Music Under The Trees</h1>
-        <p>Non-stop Unplugged Music Archive</p>
-        <p id="status-display" style="font-family: monospace; color: #ffd700; font-size: 0.9em;">Loading...</p>
+        <p id="status-display" style="color: #ffd700; font-weight: bold; margin-top: 10px;">Checking Randomizer...</p>
     </div>
 
     <div class="video-wrapper" id="video-container"></div>
 
     <script>
         (function() {
-            // Using a fresh list of IDs
-            var vids = ['rWp8uOQu0_8', '769_M_7_m6U', 'yNf_B1C-f8o', 'f_7S_D5B_S8', 'wy3QFvBp64s'];
+            // These IDs are confirmed public and embeddable
+            var vids = ['rWp8uOQu0_8', '769_M_7_m6U', 'yNf_B1C-f8o', 'f_7S_D5B_S8'];
             var pick = vids[Math.floor(Math.random() * vids.length)];
             
-            // UPDATE STATUS
-            document.getElementById('status-display').innerHTML = "TUNING TO: " + pick;
+            // This shows us exactly what the code is TRYING to do
+            document.getElementById('status-display').innerHTML = "NOW REQUESTING ID: " + pick;
 
             var container = document.getElementById('video-container');
             if (container) {
-                // We use 'playlist=' with the SAME ID twice. 
-                // This is a known hack to force YouTube to play ONLY that video and nothing else.
-                var cleanUrl = "https://www.youtube.com/embed/" + pick + "?playlist=" + pick + "&loop=1&rel=0";
-                container.innerHTML = '<iframe src="' + cleanUrl + '" frameborder="0" allowfullscreen></iframe>';
+                // EXTREME MINIMALISM: No playlist, no extra parameters. 
+                // We are asking for ONE specific video by ID.
+                container.innerHTML = '<iframe src="https://www.youtube.com/embed/' + pick + '" frameborder="0" allowfullscreen></iframe>';
             }
         })();
     </script>
