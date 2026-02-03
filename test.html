@@ -1,6 +1,4 @@
-‎
-Original file line number	Diff line number	Diff line change
-@@ -3,73 +3,66 @@
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -40,49 +38,23 @@ Original file line number	Diff line number	Diff line change
 <div class="container">
     <main>
         <h3>Featured Performance (Randomized)</h3>
-        <div class="video-container" id="player-container">
-            </div>
+        <div class="video-wrapper">
+    <iframe id="random-player" width="100%" height="315" src="" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
         <p>Welcome back! Every refresh brings a different performance from the archives.</p>
         <p><strong>R.I.P. "Vernon the German"</strong></p>
 
         <script>
-    // 1. Add your favorite Video IDs from the playlist here
-    // These act as the "Starting Gate" for the randomizer
-    var startVideos = [
-        'p_jV8P_3xXo', 
-        'rWp8uOQu0_8', 
-        '769_M_7_m6U', 
-        'yNf_B1C-f8o'
-    ];
-    // 2. Your Playlist ID
-    // 1. Your Playlist ID
-    var playlistId = 'PLD120C20914884BFA';
-    
-    // 2. Total number of videos in your playlist (Estimate is fine)
-    var totalVideos = 200; 
-    
-    // 3. Pick a random number between 0 and 199
-    var randomIndex = Math.floor(Math.random() * totalVideos);
-
-    // 3. Logic to pick a random starting video
-    var randomStartIndex = Math.floor(Math.random() * startVideos.length);
-    var selectedVideo = startVideos[randomStartIndex];
-    // 4. Construct the URL
-    // This tells YouTube: "Play this specific video, and then load the rest of this playlist."
-    var embedUrl = 'https://www.youtube.com/embed/' + selectedVideo + 
-                   '?list=' + playlistId + 
-    // 4. Build the URL using 'index'
-    // 'list' identifies the playlist
-    // 'index' tells it exactly which video to start on
-    var embedUrl = 'https://www.youtube.com/embed?listType=playlist&list=' + playlistId + 
-                   '&index=' + randomIndex + 
-                   '&autoplay=1' + 
-                   '&shuffle=1' + 
-                   '&cb=' + Date.now(); // The "Cache Buster"
-                   '&shuffle=1';
-
-    // 5. Place it in the container
-    // 5. Inject into the player
-    document.getElementById('player-container').innerHTML = 
-        '<iframe src="' + embedUrl + '" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
+    (function() {
+        var vids = ['p_jV8P_3xXo', 'rWp8uOQu0_8', '769_M_7_m6U', 'yNf_B1C-f8o', 'f_7S_D5B_S8'];
+        var pick = vids[Math.floor(Math.random() * vids.length)];
+        var playlist = 'PLD120C20914884BFA';
+        
+        var player = document.getElementById('random-player');
+        
+        if (player) {
+            // Clean URL: No autoplay, no mute. Just the video + the playlist.
+            player.src = "https://www.youtube.com/embed/" + pick + "?list=" + playlist + "&rel=0";
+        }
+    })();
 </script>
