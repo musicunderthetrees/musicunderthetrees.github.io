@@ -1,25 +1,22 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Music Under The Trees</title>
-</head>
 <body>
-    <h3>Success! If you see a video, the randomizer is back.</h3>
+    <h2 id="current-id">Waiting for Randomizer...</h2>
     <div id="player-box"></div>
 
     <script>
         (function() {
-            // These 4 IDs are confirmed working on your channel
-            var vids = ['rWp8uOQu0_8', '769_M_7_m6U', 'yNf_B1C-f8o', 'f_7S_D5B_S8'];
-            var pick = vids[Math.floor(Math.random() * vids.length)];
-            var playlist = 'PLD120C20914884BFA';
+            // We are using ONLY these 4 IDs. No Zambelli allowed!
+            var myVids = ['rWp8uOQu0_8', '769_M_7_m6U', 'yNf_B1C-f8o', 'f_7S_D5B_S8'];
+            var myPick = myVids[Math.floor(Math.random() * myVids.length)];
             
-            // We combine the random video with the playlist back-up
-            var finalUrl = "https://www.youtube.com/embed/" + pick + "?list=" + playlist;
+            // Update the text so you can see the math working
+            document.getElementById('current-id').innerHTML = "Playing Video ID: " + myPick;
 
             var target = document.getElementById('player-box');
             if (target) {
-                target.innerHTML = '<iframe width="100%" height="315" src="' + finalUrl + '" frameborder="0" allowfullscreen></iframe>';
+                // NOTICE: I removed "?list=..." entirely!
+                target.innerHTML = '<iframe width="100%" height="315" src="https://www.youtube.com/embed/' + myPick + '" frameborder="0" allowfullscreen></iframe>';
             }
         })();
     </script>
